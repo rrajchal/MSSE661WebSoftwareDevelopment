@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hello World</title>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+  </head>
+  <body>
+    <h1>Hello, World!</h1>
+    <p>
+      I'm Rajesh Rajchal, and I'm currently working full-time as a Software
+      Engineer at Raytheon. My experience includes working with Spring, HTML,
+      JavaScript, and several front-end frameworks. My favorite programming
+      languages are Java and Python, and I feel most at ease with them.
+    </p>
+    <p>
+      Although I have some experience with front-end frameworks, I'm looking to
+      deepen my understanding and address areas where I need more clarity. I
+      hope this class will help me become proficient with popular web frameworks
+      and enable me to quickly pick up new ones in the future.
+    </p>
+    <p>
+      Outside of my work in computer science, I enjoy playing chess, which
+      provides a relaxing break from coding.
+    </p>
+    <!--Later we are changing My Email to rrajchal@regis.edu from the JS below -->
+    <p>
+      Feel free to reach out to me at
+      <a href="mailto:rrajchal@regis.edu">My Email</a> if you'd like to connect.
+    </p>
+    <p>To search about me</p>
+    <p>Best regards,</p>
+    <p>Rajesh</p>
+  </body>
+  <script>
+    //When Window finishes loading run this function
+    window.onload = function () {
+      //Change the Text display from "My Email" to actual email
+      const emailLink = document.querySelector(
+        'a[href="mailto:rrajchal@regis.edu"]'
+      );
+      emailLink.innerHTML = "rrajchal@regis.edu";
+
+      // Auto Format Key combination
+      var format = "Auto Format Key combination: Shift + Alt + F";
+      console.log(format);
+
+      // Define number - blockwise scope
+      let str = "10";
+      let num = Number(str);
+      console.log(num); // Displays: 10
+      num = num + 1;
+      console.log(num); // Displays: 11
+
+      // Define array
+      var array = Array(1, 2, 3, 4, 5);
+      for (var element in array) {
+        console.log(element);
+      }
+
+      // Function(a, b, c, d);
+      function sum(a, b) {
+        return a + b;
+      }
+
+      console.log(sum(3, 5)); // Displays: 8
+
+      // Define objects
+      var dict = {
+        cat: "A pet animial",
+        tiger: "Not a pet animal",
+      };
+
+      console.log(dict.tiger); // Displays: Not a pet animal
+    };
+  </script>
+</html>
