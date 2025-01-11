@@ -16,7 +16,7 @@ This is a simple HTML page that introduces Rajesh Rajchal, a Software Engineer a
 
 ## How to Use
 
-1. Clone or download this repository.
+1. Clone or download this repository https://github.com/rrajchal/MSSE661WebSoftwareDevelopment.
 2. Ensure that you have the following files in the same directory:
    - `index.html`
    - `style.css`
