@@ -1,0 +1,88 @@
+/* Reset default margin and padding for all elements */
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/* Set width to 100% for the main class */
+.main {
+    width: 100%;
+}
+
+/* Set height, width, and background color */
+header {
+    height: 50px;
+    width: 100%;
+    background-color: lightgrey;
+}
+
+/* Use flexbox (Flexible Box) layout and add top padding */
+nav {
+    display: flex;
+    padding-top: 12px;
+}
+
+/* For unordered list use flexbox layout, center items, and set width */
+nav ul {
+    display: flex;
+    width: 200px;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+/* Add horizontal (left and right) padding and set fixed width */
+li {
+    padding: 0 10px;
+    width: 50px;
+}
+
+/* Remove default list styling for unordered lists and list items (no bullets) */
+ul,
+li {
+    list-style: none;
+}
+
+/* Set minimum height, use flexbox layout, and center content */
+.content {
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin-top: 50px;
+}
+
+/* Center container styling: Use flexbox layout with column direction */
+.center {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Footer styling: Position at the bottom, set height, and width */
+footer {
+    position: absolute;
+    bottom: 0;
+    height: 100px;
+    width: 100%;
+}
+
+/* Flexbox layout for labels, center items vertically */
+label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px; 
+}
+
+/* Styling for input fields */
+input {
+    width: 200px; 
+    padding: 5px; 
+    margin-left: 0; 
+    box-sizing: border-box; 
+}
+
+/* Add margin to input fields within labels */
+label input {
+    margin-left: 20px;
+}
+
+

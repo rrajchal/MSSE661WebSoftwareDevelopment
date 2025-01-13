@@ -1,4 +1,4 @@
-# Styled Introduction Page
+# Introduction Page
 
 This is a simple HTML page that introduces Rajesh Rajchal, a Software Engineer at Raytheon. The page includes styled text using an external CSS file.
 
