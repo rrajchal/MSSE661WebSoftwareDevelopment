@@ -1,0 +1,15 @@
+{
+  "name": "week3-webserversanddatabases",
+  "version": "1.0.0",
+  "description": "This project is designed to delve deeper into understanding Javascript basics that we will use in creating our own Data Service Application and API through MySQL databases and complex queries through the development of your own database representing a collection of data.",
+  "main": "index.js",
+  "scripts": {
+    "start": "lite-server"
+  },
+  "dependencies": {
+    
+  },
+  "devDependencies": {
+    "lite-server": "^2.6.1"
+  }
+}
