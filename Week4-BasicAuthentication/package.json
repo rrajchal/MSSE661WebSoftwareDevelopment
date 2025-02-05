@@ -1,0 +1,25 @@
+{
+  "name": "week4-basicauthentication",
+  "version": "1.0.0",
+  "description": "This project is designed to delve deeper into understanding Javascript basics that we will use in creating our own Data Service Application and API through MySQL databases and complex queries through the development of your own database representing a collection of data.",
+  "main": "./server/server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "cd server && node server.js",
+    "dev": "cd server && nodemon server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.7"
+  }
+}
