@@ -36,5 +36,53 @@ Nepal boasts a rich and diverse cultural heritage, which includes a variety of t
 - **Security:** Password encryption using bcrypt
 - **Testing:** Unit testing
 
+## Data Collection Method
+The primary method for data collection in this project will be secondary research. This involves gathering existing information from various sources to ensure comprehensive and accurate data collection. The steps include:
+
+- **Books and Articles:** Utilize academic books, journals, and articles that discuss Nepalese culture and traditional games.
+- **Online Resources:** Refer to reliable websites, blogs, and online forums dedicated to Nepalese games or cultural heritage.
+- **Documentaries & Videos:** Watch documentaries and videos that feature traditional Nepalese games and their significance.
+- **Reports and Studies:** Access reports and studies conducted by cultural organizations and researchers on traditional games.
+- **Historical Records:** Explore historical records and archives that document the evolution and rules of traditional Nepalese games.
+
+## Database
+### User Table
+The name of the user table is `users`. The user table stores information about users in the system. It has fields such as `id` (INT, auto increment, primary key) to uniquely identify each user, `username` (VARCHAR) to store the user’s name, `email` (VARCHAR) for the user’s email address, `password` (VARCHAR) for storing the user’s password, and `created_at` (TIMESTAMP, default current timestamp) to record when the user account was created. Each field has a specific data type that ensures the data stored is valid and appropriate for its purpose.
+
+| Field      | Data Type    | Description                            |
+|------------|--------------|----------------------------------------|
+| id         | INT          | User ID, auto increment (primary key)  |
+| username   | VARCHAR(255) | Username                               |
+| email      | VARCHAR(255) | Email address                          |
+| password   | VARCHAR(255) | Password                               |
+| created_at | TIMESTAMP    | Default current timestamp              |
+
+### Game Table
+The name of the game table is `games`. The game table contains details about various games. It includes fields such as `game_id` (INT, auto increment, primary key) to uniquely identify each game, `game_name` (VARCHAR) for the name of the game, `game_description` (TEXT) to provide a description of the game, `game_image_url` (VARCHAR) to store the URL of an image representing the game, and `created_at` (TIMESTAMP, default current timestamp) to track when the game entry was created. These fields and their data types help organize and store information about the games effectively.
+
+| Field            | Data Type    | Description                                     |
+|------------------|--------------|-------------------------------------------------|
+| game_id          | INT          | Game ID, auto increment (primary key)           |
+| game_name        | VARCHAR(255) | Name of the game                                |
+| game_description | TEXT         | Description of the game                         |
+| game_image_url   | VARCHAR(255) | URL to an image representing the game           |
+| created_at       | TIMESTAMP    | Default current timestamp                       |
+
+## User Stories
+### Viewing Webpage without Login
+As an anonymous user, I want to view the homepage so that I can see the general content and information available without needing to log in.
+
+### Login
+As a registered user, I want to log in to the website so that I can access my personal account and features restricted to logged-in users.
+
+### Register
+As a new user, I want to register an account so that I can gain full access to the website's features and services.
+
+### View Game Information
+As a logged-in user, I want to view detailed information about games so that I can learn about the game, its features, and how to play it.
+
+### Play Games
+As a logged-in user, I want to play games available on the website so that I can enjoy the gaming experience and track my progress.
+
 ## Conclusion
 This project aims to create an engaging and secure online gaming portal that highlights Nepalese games. Through this project, I will apply the concepts learned in this course, such as web document structure, authentication flows, form validation, and server-side programming. The application will be a foundation for future enhancements and additional game development.
