@@ -6,8 +6,8 @@
  * DELETE - Delete
  */
 
-const db = require('../../db-config'); 
-const queries = require('../../../database/queries/tasks.queries');
+const db = require("../../db-config");
+const queries = require("../../../database/queries/tasks.queries");
 
 // Get all tasks
 exports.getAllTasks = (req, res) => {
@@ -27,7 +27,7 @@ exports.getTaskById = (req, res) => {
       return res.status(500).json({ error: err.message });
     }
     if (result.length === 0) {
-      return res.status(404).json({ message: 'Task not found' });
+      return res.status(404).json({ message: "Task not found" });
     }
     res.status(200).json(result[0]);
   });
@@ -41,8 +41,8 @@ exports.createTask = (req, res) => {
       return res.status(500).json({ error: err.message });
     }
     res.status(201).json({
-      message: 'Task created successfully',
-      taskId: result.insertId
+      message: "Task created successfully",
+      taskId: result.insertId,
     });
   });
 };
@@ -51,12 +51,16 @@ exports.createTask = (req, res) => {
 exports.updateTask = (req, res) => {
   const { description, completed } = req.body;
   const taskId = req.params.taskId;
-  db.query(queries.UPDATE_TASK, [description, completed, taskId], (err, result) => {
-    if (err) {
-      return res.status(500).json({ error: err.message });
+  db.query(
+    queries.UPDATE_TASK,
+    [description, completed, taskId],
+    (err, result) => {
+      if (err) {
+        return res.status(500).json({ error: err.message });
+      }
+      res.status(200).json({ message: "Task updated successfully" });
     }
-    res.status(200).json({ message: 'Task updated successfully' });
-  });
+  );
 };
 
 // Delete a task
@@ -66,6 +70,6 @@ exports.deleteTask = (req, res) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-    res.status(200).json({ message: 'Task deleted successfully' });
+    res.status(200).json({ message: "Task deleted successfully" });
   });
 };

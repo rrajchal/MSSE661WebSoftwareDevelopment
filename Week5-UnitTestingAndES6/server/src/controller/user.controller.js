@@ -25,6 +25,7 @@ exports.getUserById = (req, res) => {
   });
 };
 
+// Just for testing
 exports.getUsers = function(req, res) {
   res.status(200).json({
     message: "Get Users Endpoint",
