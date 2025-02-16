@@ -34,7 +34,7 @@ app.use(middleware.error404);
 app.use(middleware.error500);
 
 // Listen on server port
-app.listen(port, function() {
+app.listen(port, () => {
   console.log(`server.js: Running on port: http://localhost:${port}...`);
 });
 

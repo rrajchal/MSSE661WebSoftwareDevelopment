@@ -1,6 +1,9 @@
 const bcrypt = require('bcrypt');
+const jwtHelper = require('../utils/jwt-helpers');
 const crud = require('../../../database/crud');
-require('../../db-config'); 
+require('../../db-config');
+
+const SECRET_KEY = jwtHelper.jwtConfig.access;
 
 // Register user
 exports.registerUser = function(req, res) {
@@ -86,10 +89,43 @@ exports.login = function(req, res) {
         });
       }
 
+      // Generate JWT tokens
+      const accessToken = jwtHelper.generateToken(user.id, '1h'); // Access token expires in 1 hour
+      const refreshToken = jwtHelper.generateRefreshToken(user.id, '7d'); // Refresh token expires in 7 days
+
+      console.log("auth.controller.js - accessToken: ", accessToken);
+      console.log("auth.controller.js - refreshToken: ", refreshToken);
+
+      jwtHelper.storeRefreshToken(refreshToken); // Store refresh token
+
       res.status(200).json({
         message: "Login successful",
-        status: 200
+        status: 200,
+        accessToken, // Return the access token
+        refreshToken // Return the refresh token
       });
     });
   });
+};
+
+// Verify token middleware
+exports.verifyToken = function(req, res, next) {
+  const token = req.headers['authorization']?.split(' ')[1];
+  console.log("token: ", token);
+  if (!token) {
+    return res.status(403).json({
+      message: "No token provided",
+      status: 403
+    });
+  }
+
+  const decoded = jwtHelper.verifyToken(token, SECRET_KEY, req, res);
+
+  if (!decoded) {
+    return; // jwtHelper.verifyToken will handle the response
+  }
+
+  // Save decoded info for use in other routes
+  req.userId = decoded.id;
+  next();
 };
