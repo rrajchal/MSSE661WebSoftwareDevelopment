@@ -52,6 +52,8 @@ The name of the user table is `users`. The user table stores information about u
 | Field      | Data Type    | Description                            |
 |------------|--------------|----------------------------------------|
 | id         | INT          | User ID, auto increment (primary key)  |
+| first_name | VARCHAR(255) | User's first name                      |
+| last_name  | VARCHAR(255) | User's last name                       |
 | username   | VARCHAR(255) | Username                               |
 | email      | VARCHAR(255) | Email address                          |
 | password   | VARCHAR(255) | Password                               |
@@ -64,9 +66,13 @@ The name of the game table is `games`. The game table contains details about var
 |------------------|--------------|-------------------------------------------------|
 | game_id          | INT          | Game ID, auto increment (primary key)           |
 | game_name        | VARCHAR(255) | Name of the game                                |
+| category         | VARCHAR(255) | Category of the game                            |
 | game_description | TEXT         | Description of the game                         |
+| game_rule        | TEXT         | Rules of the game                               |
 | game_image_url   | VARCHAR(255) | URL to an image representing the game           |
+| type             | VARCHAR(255) | Type (Indoor/Outdoor)                           |
 | created_at       | TIMESTAMP    | Default current timestamp                       |
+
 
 ## User Stories
 ### Viewing Webpage without Login

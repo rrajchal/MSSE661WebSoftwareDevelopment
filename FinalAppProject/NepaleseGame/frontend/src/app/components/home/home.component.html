@@ -1,7 +1,25 @@
 <div class="main-content">
-    <h2>Nepalese Game Portal – A Fun Online Experience</h2>
-    <p>
-      This application will be a gaming portal where users can sign up, log in, and enjoy various Nepalese games. In addition to offering an engaging gaming experience, this portal will provide information about various games played in Nepal. This will offer users a comprehensive and culturally rich understanding of Nepalese gaming traditions. Guests without login credentials can view basic content about games but will not have access to detailed game information or the ability to play games.
-    </p>
-  </div>
-  
+  <h2>Nepalese Game Portal – A Fun Online Experience</h2>
+  <p>
+    This application will be a gaming portal where users can sign up, log in, and enjoy various Nepalese games. In addition to offering an engaging gaming experience, this portal will provide information about various games played in Nepal. This will offer users a comprehensive and culturally rich understanding of Nepalese gaming traditions. Guests without login credentials can view basic content about games but will not have access to detailed game information or the ability to play games.
+  </p>
+</div>
+
+<table class="games-table">
+  <thead>
+    <tr>
+      <th>Game Name</th>
+      <th>Description</th>
+      <th>Category</th>
+      <th>Type (Indoor/Outdoor)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let game of games">
+      <td>{{ game.game_name }}</td>
+      <td>{{ game.description }}</td>
+      <td>{{ game.category }}</td>
+      <td>{{ game.type }}</td>
+    </tr>
+  </tbody>
+</table>

@@ -11,10 +11,14 @@
 npm-debug.log
 yarn-error.log
 
+# Angular cache
+.angular/
+
 # IDEs and editors
 .idea/
 .project
 .classpath
+.an
 .c9/
 *.launch
 .settings/
