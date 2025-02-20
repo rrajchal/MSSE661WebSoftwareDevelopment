@@ -4,7 +4,6 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="./css/styles.css">
-  <link rel="stylesheet" href="./css/flexbox.css">
   <title>Task Management</title>
 </head>
 <body>
@@ -47,10 +46,14 @@
         <div id="add-task-form" class="form-container" style="display: none;">
           <h3>Add Task</h3>
           <form onsubmit="addTask(event)">
-            <label for="description">Description:</label>
-            <input type="text" id="description" name="description" required>
-            <label for="completed">Completed:</label>
-            <input type="checkbox" id="completed" name="completed">
+            <div class="form-row">
+              <label for="description">Description:</label>
+              <input type="text" id="description" name="description" required>
+            </div>
+            <div class="form-row">
+              <label for="completed">Completed:</label>
+              <input type="checkbox" id="completed" name="completed">
+            </div>
             <button type="submit">Add Task</button>
           </form>
         </div>
@@ -58,12 +61,18 @@
         <div id="update-task-form" class="form-container" style="display: none;">
           <h3>Update Task</h3>
           <form onsubmit="updateTask(event)">
-            <label for="task-id">Task ID:</label>
-            <input type="text" id="task-id" name="task-id" required>
-            <label for="description">Description:</label>
-            <input type="text" id="update-description" name="description" required>
-            <label for="completed">Completed:</label>
-            <input type="checkbox" id="update-completed" name="completed">
+            <div class="form-row">
+              <label for="task-id">Task ID:</label>
+              <input type="text" id="task-id" name="task-id" required>
+            </div>
+            <div class="form-row">
+              <label for="description">Description:</label>
+              <input type="text" id="update-description" name="description" required>
+            </div>
+            <div class="form-row">
+              <label for="completed">Completed:</label>
+              <input type="checkbox" id="update-completed" name="completed">
+            </div>
             <button type="submit">Update Task</button>
           </form>
         </div>
@@ -71,8 +80,10 @@
         <div id="delete-task-form" class="form-container" style="display: none;">
           <h3>Delete Task</h3>
           <form onsubmit="deleteTask(event)">
-            <label for="task-id">Task ID:</label>
-            <input type="text" id="delete-task-id" name="task-id" required>
+            <div class="form-row">
+              <label for="task-id">Task ID:</label>
+              <input type="text" id="delete-task-id" name="task-id" required>
+            </div>
             <button type="submit">Delete Task</button>
           </form>
         </div>
@@ -88,7 +99,7 @@
           <li><a href="./about.html">About</a></li>
         </ul>
       </nav>
-      <p>Author: <a href="https://github.com/rrajchal/MSSE661WebSoftwareDevelopment/tree/main/Week5-UnitTestingAndES6">Rajesh Rajchal</a></p>
+      <p>Author: <a href="https://github.com/rrajchal/MSSE661WebSoftwareDevelopment/tree/main/Week6-AjaxAndCRUD">Rajesh Rajchal</a></p>
     </footer>
   </div>
   <script src="./src/service-helpers.js"></script>
