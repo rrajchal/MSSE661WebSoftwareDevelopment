@@ -16,9 +16,6 @@ nav ul {
 }
 
 .content {
-  min-height: 100%;
-  width: 100%;
-  display: flex;
   justify-content: center;
   margin-top: 50px;
 }
@@ -28,7 +25,6 @@ nav ul {
   flex-direction: column;
   justify-content: space-around;
   align-items: center;
-  width: 200px;
   padding: 25px;
   border-radius: 20px;
   border: 1px solid #d3d3d3;
@@ -66,8 +62,9 @@ button {
 }
 
 footer {
-  position: absolute;
-  bottom: 0;
   height: 100px;
   width: 100%;
+  background-color: lightgrey;
+  position: sticky;
+  bottom: 0;
 }
