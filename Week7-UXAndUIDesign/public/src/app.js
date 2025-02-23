@@ -48,7 +48,6 @@ const doRegister = function(e) {
 
 const doLogout = function(e) {
   e.preventDefault();
-  // Implement logout functionality
   const refreshToken = localStorage.getItem('refreshToken'); // Get refresh token 
 
   fetch('http://localhost:3000/api/auth/logout', { // Call logout endpoint

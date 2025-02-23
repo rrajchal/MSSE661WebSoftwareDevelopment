@@ -7,6 +7,7 @@
 html,
 body {
   height: 100%;
+  background-color: beige;
 }
 
 .main {
@@ -16,14 +17,26 @@ body {
 }
 
 header {
-  height: 50px;
+  height: 70px;
   width: 100%;
   background-color: lightgrey;
+  font-size: 24px;
+}
+
+footer {
+  height: 100px;
+  width: 100%;
+  background-color: lightgrey;
+  font-size: 24px;
+  position: sticky;
+  bottom: 0;
+  text-align: center;
+  padding-top: 20px;
 }
 
 nav {
   display: flex;
-  padding-top: 12px;
+  padding: 20px;
 }
 
 nav ul {
@@ -34,8 +47,8 @@ nav ul {
 }
 
 li {
-  padding: 0 10px;
-  width: 50px;
+  padding: 0 50px 0 50px;
+  width: 150px;
 }
 
 ul,
@@ -44,6 +57,12 @@ li {
 }
 
 h2 {
+  font-size: 30px;
+  padding-bottom: 20px;
+}
+
+h3 {
+  font-size: 25px;
   padding-bottom: 20px;
 }
 
@@ -69,6 +88,7 @@ h2 {
 }
 
 label {
+  white-space: nowrap;
   text-align: right;
   clear: both;
   float: left;
@@ -88,26 +108,19 @@ input {
 }
 
 button {
-  padding: 10px;
+  padding: 15px;
   border-radius: 10px;
   border: none;
-  width: 100px;
+  width: 120px;
   background-color: #256fde;
   color: white;
   margin-bottom: 10px;
   cursor: pointer;
+  font-size: 24px;
 }
 
 button:hover {
   background-color: #1e5dc1;
-}
-
-footer {
-  height: 100px;
-  width: 100%;
-  background-color: lightgrey;
-  position: sticky;
-  bottom: 0;
 }
 
 /* Task Management styles */
@@ -119,12 +132,12 @@ footer {
 
 .task-buttons button {
   margin-right: 10px;
-  padding: 10px 20px;
+  padding: 15px 25px;
   background-color: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .task-buttons button:hover {
@@ -140,17 +153,32 @@ table {
 table,
 th,
 td {
-  border: 1px solid black;
+  border: none;
 }
 
 th,
 td {
   padding: 15px;
   text-align: left;
+  font-size: 25px;
 }
 
 th {
   background-color: #f2f2f2;
+}
+
+.table-header th {
+  background-color: #4caf50 !important; 
+  color: white; 
+}
+
+
+#tasks-table-body tr:nth-child(odd) td {
+  background-color: #f9f9f9 !important; 
+}
+
+#tasks-table-body tr:nth-child(even) td {
+  background-color: #ffffff !important;
 }
 
 .form-container {
@@ -170,11 +198,23 @@ th {
   clear: both;
   float: left;
   margin-right: 15px;
+  font-size: 25px;
 }
 
-.form-container .form-row input[type="text"],
-.form-container .form-row input[type="checkbox"] {
+input[type="text"] {
   flex: 2;
+  font-size: 25px;
+  width: 500px;
+  height: 100px;
+  cursor: pointer;
+}
+
+input[type="checkbox"] {
+  flex: 2;
+  font-size: 25px;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
 }
 
 .form-container .completed-container {
@@ -184,14 +224,82 @@ th {
 
 .form-container button {
   margin-top: 20px; /* Add spacing for bottom button */
-  padding: 10px 20px;
+  padding: 15px 25px;
   background-color: #4caf50;
   color: white;
   border: none;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 24px;
 }
 
 .form-container button:hover {
   background-color: #45a049;
+}
+
+.task-page-info {
+  margin: 10px 0;
+  font-size: 24px;
+  padding: 15px;
+  border-radius: 5px;
+  color: blue;
+}
+
+.info {
+  margin: 10px 0;
+  font-size: 24px;
+  color: blue;
+  width: 1000px;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+/* Login form styles */
+.login-form {
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.login-form label {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 10px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.login-form button {
+  width: 50%;
+  padding: 10px;
+  background-color: #256fde;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.login-form button:hover {
+  background-color: #1e5dc1;
+}
+
+.login-form a {
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  color: #256fde;
 }

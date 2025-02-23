@@ -13,7 +13,3 @@ authRoutes.post("/logout", jwtHelper.logout); // Logout endpoint
 authRoutes.use(controller.verifyToken);
 
 module.exports = authRoutes;
-
-// authRoutes.post("/logout", controller.logout);
-
-module.exports = authRoutes;

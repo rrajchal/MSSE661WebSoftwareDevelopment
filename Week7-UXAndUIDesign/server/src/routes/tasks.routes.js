@@ -18,5 +18,4 @@ tasksRoutes.post('/', tasksController.createTask);
 tasksRoutes.put('/:taskId', tasksController.updateTask);
 tasksRoutes.delete('/:taskId', tasksController.deleteTask);
 
-
 module.exports = tasksRoutes;
