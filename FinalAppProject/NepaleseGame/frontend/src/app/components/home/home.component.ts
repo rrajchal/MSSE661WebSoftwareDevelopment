@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from './../../games.service';
 import { Games } from './../../games';
+import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -11,7 +13,7 @@ import { CommonModule } from '@angular/common';
 export class HomeComponent implements OnInit {
   games: Games[] = [];
 
-  constructor(private gameService: GameService) {}
+  constructor(private gameService: GameService, private router: Router) {}
 
   ngOnInit(): void {
     this.loadGames();
@@ -19,5 +21,9 @@ export class HomeComponent implements OnInit {
 
   loadGames(): void {
     this.games = this.gameService.getGames();
+  }
+
+  viewGame(game: Games): void {
+    this.router.navigate(['/game', game.game_id]);
   }
 }

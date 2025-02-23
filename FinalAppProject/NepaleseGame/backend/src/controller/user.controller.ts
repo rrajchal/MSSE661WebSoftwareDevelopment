@@ -26,10 +26,3 @@ export const getUserById = (req: Request, res: Response) => {
   });
 };
 
-// Just for testing
-export const getUsers = (req: Request, res: Response) => {
-  res.status(200).json({
-    message: "Get Users Endpoint",
-    status: 200
-  });
-};

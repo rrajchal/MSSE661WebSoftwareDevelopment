@@ -55,10 +55,11 @@ con.connect((err: MysqlError | null) => {
             game_id INT AUTO_INCREMENT PRIMARY KEY,
             game_name VARCHAR(255) NOT NULL,
             category VARCHAR(255) NOT NULL,
-            game_description TEXT NOT NULL,
-            game_image_url VARCHAR(255) NOT NULL,
+            description TEXT NOT NULL,
+            image_url VARCHAR(255) NOT NULL,
             type VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`;
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)`;
 
         con.query(createGamesTable, (err: MysqlError | null, result: any) => {
           if (err) throw err;

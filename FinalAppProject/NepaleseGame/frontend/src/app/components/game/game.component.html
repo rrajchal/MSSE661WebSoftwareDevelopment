@@ -1,0 +1,15 @@
+<div *ngIf="game" class="game-container">
+    <h2 class="game-title">{{ game.game_name }}</h2>
+    <img [src]="game.image_url" alt="{{ game.game_name }}" class="game-image" />
+    <div class="game-details">
+      <p><strong>Category:</strong> {{ game.category }}</p>
+      <p><strong>Type:</strong> {{ game.type }}</p>
+      <p><strong>Description:</strong> {{ game.description }}</p>
+      <p><strong>Rule:</strong> {{ game.game_rule }}</p>
+    </div>
+    <button class="play-button" (click)="playGame()">Play</button>
+  </div>
+  <div *ngIf="!game" class="loading">
+    <p>Loading game details...</p>
+  </div>
+  

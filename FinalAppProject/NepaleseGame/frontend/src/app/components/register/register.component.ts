@@ -31,7 +31,7 @@ export class RegisterComponent {
       return;
     }
 
-    this.http.post<any>(`${environment.apiUrl}/auth/register`, { first_name: firstName, last_name: lastName, username, email, password })
+    this.http.post<any>(`${environment.apiUrl}/api/auth/register`, { first_name: firstName, last_name: lastName, username, email, password })
       .subscribe({
         next: (res) => {
           if (res.status === 201) {

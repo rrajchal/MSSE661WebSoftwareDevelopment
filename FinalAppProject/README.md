@@ -60,18 +60,19 @@ The name of the user table is `users`. The user table stores information about u
 | created_at | TIMESTAMP    | Default current timestamp              |
 
 ### Game Table
-The name of the game table is `games`. The game table contains details about various games. It includes fields such as `game_id` (INT, auto increment, primary key) to uniquely identify each game, `game_name` (VARCHAR) for the name of the game, `game_description` (TEXT) to provide a description of the game, `game_image_url` (VARCHAR) to store the URL of an image representing the game, and `created_at` (TIMESTAMP, default current timestamp) to track when the game entry was created. These fields and their data types help organize and store information about the games effectively.
+The name of the game table is `games`. The game table contains details about various games. It includes fields such as `game_id` (INT, auto increment, primary key) to uniquely identify each game, `game_name` (VARCHAR) for the name of the game, `description` (TEXT) to provide a description of the game, `image_url` (VARCHAR) to store the URL of an image representing the game, and `created_at` (TIMESTAMP, default current timestamp) to track when the game entry was created. These fields and their data types help organize and store information about the games effectively.
 
 | Field            | Data Type    | Description                                     |
 |------------------|--------------|-------------------------------------------------|
 | game_id          | INT          | Game ID, auto increment (primary key)           |
 | game_name        | VARCHAR(255) | Name of the game                                |
 | category         | VARCHAR(255) | Category of the game                            |
-| game_description | TEXT         | Description of the game                         |
+| description | TEXT         | Description of the game                         |
 | game_rule        | TEXT         | Rules of the game                               |
-| game_image_url   | VARCHAR(255) | URL to an image representing the game           |
+| image_url   | VARCHAR(255) | URL to an image representing the game           |
 | type             | VARCHAR(255) | Type (Indoor/Outdoor)                           |
-| created_at       | TIMESTAMP    | Default current timestamp                       |
+| created_date     | TIMESTAMP    | Default current timestamp                       |
+| modified_date    | TIMESTAMP    | Modified date timestamp                         |
 
 
 ## User Stories

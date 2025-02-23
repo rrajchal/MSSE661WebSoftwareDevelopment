@@ -4,72 +4,74 @@ import { Request, Response } from 'express';
 
 dotenv.config();
 
-const SECRET_KEY = process.env.SECRET_KEY || 'secret_key';
-const REFRESH_SECRET_KEY = process.env.REFRESH_SECRET_KEY || 'refresh_secret_key';
+const SECRET_KEY = process.env.JWT_ACCESS_SECRET || 'reallysecretaccesssecret';
+const REFRESH_SECRET_KEY = process.env.JWT_REFRESH_SECRET || 'reallysecretrefreshsecret';
 
 const jwtConfig = {
   access: SECRET_KEY,
   refresh: REFRESH_SECRET_KEY,
 };
 
-export const generateToken = (userId: string, expiresIn: number) => {
-  const payload = { id: userId };
+// Refresh tokens storage (REPLACE with a database or Redis in production)
+let refreshTokens: string[] = [];
+
+// Generate Access Token
+const generateToken = (id: string, expiresIn: number) => {
+  const payload = { id };
   const options: SignOptions = { expiresIn };
   return jwt.sign(payload, SECRET_KEY, options);
 };
 
-export const generateRefreshToken = (userId: string, expiresIn: number) => {
-  const payload = { id: userId };
+// Generate Refresh Token
+const generateRefreshToken = (id: string, expiresIn: number) => {
+  const payload = { id };
   const options: SignOptions = { expiresIn };
   return jwt.sign(payload, REFRESH_SECRET_KEY, options);
 };
 
-export const verifyToken = (token: string, secret: string) => {
+// Verify Token
+const verifyToken = (token: string, secret: string) => {
   try {
     return jwt.verify(token, secret);
-  } catch (err) {
-    return null;
+  } catch (error) {
+    console.error('JWT Verification Error:', error);
+    throw error;
   }
 };
 
-export const storeRefreshToken = (token: string) => {
-  // TODO Implement logic to store the refresh token
-  console.log("Storing refresh token:", token);
+// Store Refresh Token (REPLACE with database or Redis in production)
+const storeRefreshToken = (token: string) => {
+  refreshTokens.push(token);
 };
 
-export const deleteRefreshToken = (token: string) => {
-  // TODO Implement logic to delete the refresh token 
-  console.log("Deleting refresh token:", token);
+// Find Refresh Token (REPLACE with database or Redis in production)
+const findRefreshToken = (token: string) => {
+  return refreshTokens.includes(token);
 };
 
-export const findRefreshToken = (token: string) => {
-  // TODO Implement logic to find the refresh token
-  console.log("Finding refresh token:", token);
-  return true;
+// Delete Refresh Token (REPLACE with database or Redis in production)
+const deleteRefreshToken = (token: string) => {
+  refreshTokens = refreshTokens.filter(t => t !== token);
 };
 
+// Refresh Token Endpoint (/token)
 export const token = async (req: Request, res: Response) => {
-  if (!req.body || !req.body.token) {
+  const refreshToken = req.body.token;
+
+  if (!refreshToken) {
     return res.status(401).json({ error: 'Access Denied. No token provided.' });
   }
 
-  const refreshToken = req.body.token;
-  const foundToken = findRefreshToken(refreshToken);
-
-  if (!foundToken) {
+  if (!findRefreshToken(refreshToken)) {
     return res.status(401).json({ error: 'Invalid Refresh Token' });
   }
 
   try {
-    const decoded = verifyToken(refreshToken, jwtConfig.refresh);
+    const decoded: any = verifyToken(refreshToken, REFRESH_SECRET_KEY);
 
-    if (!decoded) {
-      return res.status(401).json({ error: 'Invalid token' });
-    }
+    const accessToken = generateToken(decoded.id, 3600);                 // 1h = 60*60 = 3600
+    const newRefreshToken = generateRefreshToken(decoded.id, 86400);      // 1d = 1h * 24 = 3600 * 24 = 86000
 
-    const accessToken = generateToken((decoded as any).id, 86400); // 86400 seconds = 24 hours
-
-    const newRefreshToken = generateRefreshToken((decoded as any).id, 604800); // 604800 seconds = 7 days
     storeRefreshToken(newRefreshToken);
     deleteRefreshToken(refreshToken);
 
@@ -83,16 +85,12 @@ export const token = async (req: Request, res: Response) => {
       refresh_token: newRefreshToken,
     });
   } catch (error) {
-    console.error('Token Refresh Error:', error);
-    res.status(500).json({ error: 'Failed to refresh token' });
+    res.status(401).json({ error: 'Invalid token' });
   }
 };
 
+// Logout Endpoint (/logout)
 export const logout = (req: Request, res: Response) => {
-  if (!req.body || !req.body.token) {
-    return res.status(400).json({ error: 'No token provided for logout' });
-  }
-
   const token = req.body.token || req.headers.authorization?.split(' ')[1];
 
   if (token) {
@@ -102,16 +100,13 @@ export const logout = (req: Request, res: Response) => {
   res.json({ message: 'Logout successful' });
 };
 
-export const jwtHelper = {
+// Export the functions and constants
+export {
   jwtConfig,
   generateToken,
   generateRefreshToken,
   verifyToken,
   storeRefreshToken,
-  deleteRefreshToken,
   findRefreshToken,
-  token,
-  logout,
+  deleteRefreshToken,
 };
-
-export default jwtHelper;

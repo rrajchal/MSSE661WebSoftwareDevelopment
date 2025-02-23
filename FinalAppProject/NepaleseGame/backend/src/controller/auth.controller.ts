@@ -1,9 +1,9 @@
 import { Request, Response, NextFunction } from 'express';
 import bcrypt from 'bcryptjs';
-import jwtHelper from '../utils/jwt-helpers';
-import * as crud from '../../database/crud';
+import { generateToken, generateRefreshToken, verifyToken as verifyJWT, storeRefreshToken, jwtConfig } from '../utils/jwt-helpers';
+import * as crud from '../../database/user_crud';
 
-const SECRET_KEY = jwtHelper.jwtConfig.access;
+const SECRET_KEY = jwtConfig.access;
 
 // Extend the Request interface to include userId
 interface ExtendedRequest extends Request {
@@ -86,37 +86,40 @@ export const login = (req: Request, res: Response): Response | undefined => {
         });
       }
 
-      const accessToken = jwtHelper.generateToken(user.user_id, 3600); // 1 hour in seconds
-      const refreshToken = jwtHelper.generateRefreshToken(user.user_id, 604800); // 7 days in seconds
+      const accessToken = generateToken(user.user_id, 3600); // 1 hour in seconds
+      const refreshToken = generateRefreshToken(user.user_id, 86400); // 1 day in seconds
 
-      jwtHelper.storeRefreshToken(refreshToken);
+      storeRefreshToken(refreshToken);
 
       res.status(200).json({
         message: "Login successful",
         status: 200,
         accessToken,
-        refreshToken
+        refreshToken,
+        firstName: user.first_name // Include first name in response to display on the page
       });
     });
   });
 };
 
-export const verifyToken = (req: ExtendedRequest, res: Response, next: NextFunction): Response | undefined => {
+export const verifyToken = (req: ExtendedRequest, res: Response, next: NextFunction): void => {
   const token = req.headers['authorization']?.split(' ')[1];
   if (!token) {
-    return res.status(403).json({
+    res.status(403).json({
       message: "No token provided",
       status: 403
     });
+    return;
   }
 
-  const decoded = jwtHelper.verifyToken(token, SECRET_KEY);
+  const decoded = verifyJWT(token, SECRET_KEY);
 
   if (!decoded) {
-    return res.status(401).json({
+    res.status(401).json({
       message: "Invalid token",
       status: 401
     });
+    return;
   }
 
   // Save decoded info for use in other routes

@@ -1,25 +1,25 @@
 <div class="main-content">
   <h2>Nepalese Game Portal – A Fun Online Experience</h2>
   <p>
-    This application will be a gaming portal where users can sign up, log in, and enjoy various Nepalese games. In addition to offering an engaging gaming experience, this portal will provide information about various games played in Nepal. This will offer users a comprehensive and culturally rich understanding of Nepalese gaming traditions. Guests without login credentials can view basic content about games but will not have access to detailed game information or the ability to play games.
+    This application will be a gaming portal where users can sign up, log in,
+    and enjoy various Nepalese games. In addition to offering an engaging gaming
+    experience, this portal will provide information about various games played
+    in Nepal. This will offer users a comprehensive and culturally rich
+    understanding of Nepalese gaming traditions. Guests without login
+    credentials can view basic content about games but will not have access to
+    detailed game information or the ability to play games.
   </p>
 </div>
 
-<table class="games-table">
-  <thead>
-    <tr>
-      <th>Game Name</th>
-      <th>Description</th>
-      <th>Category</th>
-      <th>Type (Indoor/Outdoor)</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let game of games">
-      <td>{{ game.game_name }}</td>
-      <td>{{ game.description }}</td>
-      <td>{{ game.category }}</td>
-      <td>{{ game.type }}</td>
-    </tr>
-  </tbody>
-</table>
+<div class="games-grid">
+  <div class="game-card" *ngFor="let game of games">
+    <img [src]="game.image_url" alt="{{ game.game_name }}" class="game-image" />
+    <div class="game-details">
+      <h2>{{ game.game_name }}</h2>
+      <p><strong>Category:</strong> {{ game.category }}</p>
+      <p><strong>Type:</strong> {{ game.type }}</p>
+      <p><strong>Description:</strong> {{ game.description }}</p>
+      <button class="view-more-button" (click)="viewGame(game)">View More</button>
+    </div>
+  </div>
+</div>

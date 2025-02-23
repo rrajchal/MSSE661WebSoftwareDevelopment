@@ -1,11 +1,12 @@
 <nav class="navbar">
-    <div class="navbar-title">
-      <h1>Nepalese Game Portal – A Fun Online Experience</h1>
-    </div>
-    <div class="navbar-links">
-      <a href="">Home</a>
-      <a href="/profile">Profile</a>
-      <a href="/login">Login</a>
-    </div>
-  </nav>
-  
+  <div class="navbar-title">
+    <h1>Nepalese Game Portal – A Fun Online Experience</h1>
+  </div>
+  <div class="navbar-links">
+    <a [routerLink]="['/']">Home</a>
+    <a [routerLink]="['/profile']">Profile</a>
+    <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/login']">Login</a>
+    <a *ngIf="isLoggedIn$ | async" href="" (click)="logout()">Logout</a>
+    <span *ngIf="isLoggedIn$ | async">Hello, {{ firstName$ | async }}</span>
+  </div>
+</nav>

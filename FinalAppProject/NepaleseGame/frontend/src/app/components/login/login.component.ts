@@ -1,21 +1,23 @@
 import { Component } from '@angular/core';
-import { Router, RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { RouterModule } from '@angular/router';
+import { AuthService } from './../../services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule], 
+  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
 
-  constructor(private router: Router, private http: HttpClient) { }
+  constructor(private router: Router, private http: HttpClient, private authService: AuthService) { }
 
   doLogin(event: Event) {
     event.preventDefault();
@@ -27,18 +29,17 @@ export class LoginComponent {
       return;
     }
 
-    this.http.post<any>(`${environment.apiUrl}/auth/login`, { username, password })
+    this.http.post<any>(`${environment.apiUrl}/api/auth/login`, { username, password })
       .subscribe({
         next: (res) => {
           if (res.status === 200) {
-            localStorage.setItem('accessToken', res.accessToken);
-            localStorage.setItem('refreshToken', res.refreshToken);
-            this.router.navigate(['home']);
+            this.authService.login(res.accessToken, res.firstName);
+            this.router.navigate(['']);
           } else {
             this.displayMessage('Invalid username or password');
           }
         },
-        error: (err) => {
+        error: () => {
           this.displayMessage('Invalid username or password');
         }
       });

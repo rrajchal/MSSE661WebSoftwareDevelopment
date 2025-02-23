@@ -6,9 +6,12 @@ const logger = require('morgan');
 const bodyParser = require('body-parser');
 const logLevel = process.env.LOG_LEVEL || 'dev';
 const con = require('./db-config');
-import authRoutes from './routes/auth.routes'; // Import auth routes
-
+import { authRoutes } from './routes/auth.routes';
+import { userRoutes } from './routes/user.routes';
+import { gamesRoutes } from './routes/games.routes';
 const middleware = require('./middleware/errors.middleware');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
@@ -24,16 +27,17 @@ app.use(cors({
     origin: ["http://localhost:4200"]
 }));
 
-app.use('/auth', authRoutes); // Use auth routes
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-    console.log("Backend: GET /");
-    res.send(sampleGames);
-});
+//app.use(express.static('public'));
 
-app.get("/api/games", (req, res) => {
-    res.send(sampleGames);
-})
+// Use auth routes
+app.use('/api/auth', authRoutes);          // http://localhost:5000/api/auth
+app.use('/api/auth/login', authRoutes);    // http://localhost:5000/api/auth/login
+app.use('/api/auth/logout', authRoutes);    // http://localhost:5000/api/auth/logout
+app.use('/api/user', userRoutes);    // http://localhost:5000/api/user
+app.use('/api/games', gamesRoutes);  // http://localhost:5000/api/games
 
 // Handle 404 requests
 app.use(middleware.error404);
