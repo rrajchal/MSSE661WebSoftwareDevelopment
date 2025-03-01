@@ -5,6 +5,7 @@ interface Game {
   game_name: string;
   category: string;
   description: string;
+  game_rule: string;
   image_url: string;
   type: string;
   created_date: Date;
@@ -121,6 +122,17 @@ export const sampleGames = [
     type: 'Indoor',
     created_date: new Date('2023-10-01'),
     modified_date: new Date('2023-10-01')
+  },
+  {
+    game_id: 11,
+    game_name: 'Kras Shunya',
+    category: 'Board Game',
+    description: 'A classic board game, also known as Tic-Tac-Toe, where players take turns marking Xs and Os in a 3x3 grid, aiming to align three in a row.',
+    game_rule: 'Players take turns marking empty squares on a 3x3 grid with either Xs or Os. The first player to align three of their marks horizontally, vertically, or diagonally wins the game. If all squares are filled and no player has aligned three marks, the game is a draw.',
+    image_url: 'assets/tic_tac_toe.png',
+    type: 'Indoor',
+    created_date: new Date('2023-10-01'),
+    modified_date: new Date('2023-10-01')
   }
 ];
 
@@ -132,8 +144,8 @@ const insertGames = (games: Game[]) => {
       return;
     }
     games.forEach(game => {
-      const query = `INSERT INTO games (game_id, game_name, category, description, image_url, type, created_at, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
-      const values = [game.game_id, game.game_name, game.category, game.description, game.image_url, game.type, game.created_date, game.modified_date];
+      const query = `INSERT INTO games (game_id, game_name, category, description, game_rule, image_url, type, created_at, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const values = [game.game_id, game.game_name, game.category, game.description, game.game_rule, game.image_url, game.type, game.created_date, game.modified_date]; 
 
       con.query(query, values, (err, result) => {
         if (err) {

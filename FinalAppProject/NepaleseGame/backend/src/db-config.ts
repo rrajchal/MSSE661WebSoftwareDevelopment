@@ -58,6 +58,7 @@ con.connect((err: MysqlError | null) => {
             game_name VARCHAR(255) NOT NULL,
             category VARCHAR(255) NOT NULL,
             description TEXT NOT NULL,
+            game_rule TEXT NOT NULL,
             image_url VARCHAR(255) NOT NULL,
             type VARCHAR(255) NOT NULL,
             created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,

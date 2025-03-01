@@ -23,7 +23,7 @@
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   overflow: hidden;
   width: 300px;
-  cursor: pointer; /* Add cursor pointer */
+  cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
 
@@ -34,13 +34,13 @@
 
 .game-image {
   width: 100%;
-  height: 200px;
+  height: 300px;
   object-fit: cover;
 }
 
 .game-details {
   padding: 15px;
-  text-align: center; /* Center-align text */
+  text-align: center;
 }
 
 .game-details h2 {
