@@ -31,6 +31,31 @@ export class RegisterComponent {
       return;
     }
 
+    // Validate email format
+    const emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+    if (!emailPattern.test(email)) {
+      this.displayMessage('Invalid email format');
+      return;
+    }
+
+    // Check if username already exists
+    this.http.get<any>(`${environment.apiUrl}/api/user/username/${username}`)
+      .subscribe({
+        next: (res) => {
+          this.displayMessage('Username already exists');
+        },
+        error: (err) => {
+          if (err.status === 404) {
+            // Username does not exist, proceed with registration
+            this.registerUser(firstName, lastName, username, email, password);
+          } else {
+            this.displayMessage('Error checking username');
+          }
+        }
+      });
+  }
+
+  registerUser(firstName: string, lastName: string, username: string, email: string, password: string) {
     this.http.post<any>(`${environment.apiUrl}/api/auth/register`, { first_name: firstName, last_name: lastName, username, email, password })
       .subscribe({
         next: (res) => {

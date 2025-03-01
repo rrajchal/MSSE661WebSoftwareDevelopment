@@ -51,7 +51,7 @@ The name of the user table is `users`. The user table stores information about u
 
 | Field      | Data Type    | Description                            |
 |------------|--------------|----------------------------------------|
-| id         | INT          | User ID, auto increment (primary key)  |
+| user_id         | INT          | User ID, auto increment (primary key)  |
 | first_name | VARCHAR(255) | User's first name                      |
 | last_name  | VARCHAR(255) | User's last name                       |
 | username   | VARCHAR(255) | Username                               |

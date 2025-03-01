@@ -30,6 +30,10 @@
     border: 1px solid #ccc;
     border-radius: 4px;
   }
+
+  .error-message {
+    color: red;
+  }
   
   button {
     width: 100%;
