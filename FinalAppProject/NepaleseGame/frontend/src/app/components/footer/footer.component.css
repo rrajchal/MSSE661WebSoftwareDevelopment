@@ -5,6 +5,16 @@ footer {
   text-align: center;
 }
 
+.main {
+  flex: 1;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
+}
+
 footer nav ul {
   list-style: none;
   padding: 0;

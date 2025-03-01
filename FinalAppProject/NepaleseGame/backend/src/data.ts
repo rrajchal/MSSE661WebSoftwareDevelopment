@@ -1,3 +1,16 @@
+import con from './db-config';
+
+interface Game {
+  game_id: number;
+  game_name: string;
+  category: string;
+  description: string;
+  image_url: string;
+  type: string;
+  created_date: Date;
+  modified_date: Date;
+}
+
 export const sampleGames = [
   {
     game_id: 1,
@@ -110,3 +123,28 @@ export const sampleGames = [
     modified_date: new Date('2023-10-01')
   }
 ];
+
+/*
+const insertGames = (games: Game[]) => {
+  con.query(`USE nepalese_games`, (err) => { 
+    if (err) {
+      console.error('Error selecting database:', err);
+      return;
+    }
+    games.forEach(game => {
+      const query = `INSERT INTO games (game_id, game_name, category, description, image_url, type, created_at, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`;
+      const values = [game.game_id, game.game_name, game.category, game.description, game.image_url, game.type, game.created_date, game.modified_date];
+
+      con.query(query, values, (err, result) => {
+        if (err) {
+          console.error('Error inserting data into games table:', err);
+        } else {
+          console.log('Data inserted into games table:', result);
+        }
+      });
+    });
+  });
+};
+
+insertGames(sampleGames);
+*/

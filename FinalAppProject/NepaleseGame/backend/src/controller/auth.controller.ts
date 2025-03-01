@@ -96,7 +96,7 @@ export const login = (req: Request, res: Response): Response | undefined => {
         status: 200,
         accessToken,
         refreshToken,
-        firstName: user.first_name // Include first name in response to display on the page
+        user
       });
     });
   });

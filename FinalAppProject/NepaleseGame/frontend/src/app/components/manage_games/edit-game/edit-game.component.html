@@ -1,0 +1,30 @@
+<div *ngIf="game" class="edit-game-container">
+    <h2>Edit Game</h2>
+    <form (ngSubmit)="updateGame()">
+      <label>
+        Game Name:
+        <input [(ngModel)]="game.game_name" name="game_name" required>
+      </label>
+      <label>
+        Category:
+        <input [(ngModel)]="game.category" name="category" required>
+      </label>
+      <label>
+        Description:
+        <textarea [(ngModel)]="game.description" name="description" required></textarea>
+      </label>
+      <label>
+        Image URL:
+        <input [(ngModel)]="game.image_url" name="image_url" required>
+      </label>
+      <label>
+        Type:
+        <input [(ngModel)]="game.type" name="type" required>
+      </label>
+      <button type="submit">Update Game</button>
+    </form>
+  </div>
+  <div *ngIf="!game" class="loading">
+    <p>Loading game details...</p>
+  </div>
+  

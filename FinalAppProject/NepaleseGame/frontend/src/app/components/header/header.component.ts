@@ -14,15 +14,18 @@ import { Observable } from 'rxjs';
 })
 export class HeaderComponent implements OnInit {
   isLoggedIn$: Observable<boolean>;
-  firstName$: Observable<string>;
+  user$: Observable<any>;
 
   constructor(private router: Router, private authService: AuthService) {
     this.isLoggedIn$ = this.authService.isLoggedIn;
-    this.firstName$ = this.authService.firstName;
-    console.log("header: " + this.firstName$);
+    this.user$ = this.authService.user$; 
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.user$.subscribe(user => {
+      console.log('User data:', user);
+    });
+  }
 
   logout(): void {
     this.authService.logout();

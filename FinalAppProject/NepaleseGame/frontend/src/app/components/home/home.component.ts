@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { GameService } from './../../games.service';
+import { GameService } from './../../services/game.service';
 import { Games } from './../../games';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
@@ -20,6 +20,11 @@ export class HomeComponent implements OnInit {
   }
 
   loadGames(): void {
+    // this.gameService.getAllGames().subscribe(games => {
+    //   console.log("=============");
+    //   console.log(games);
+    //   this.games = games;
+    // });
     this.games = this.gameService.getGames();
   }
 

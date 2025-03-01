@@ -1,13 +1,13 @@
 export class Games {
-    game_id: number; // Game ID, auto increment (primary key)
+    game_id?: number; // Game ID, auto increment (primary key)
     game_name: string; // Name of the game
     category: string; // Category of the game
     description: string; // Description of the game
     game_rule: string; // Rules of the game
     image_url: string; // URL to an image representing the game
     type: string; // Type (Indoor/Outdoor)
-    created_date: Date; // Default current timestamp for creation date
-    modified_date: Date; // Timestamp for the last modified date
+    created_date?: Date; // Default current timestamp for creation date
+    modified_date?: Date; // Timestamp for the last modified date
 
     constructor(
       game_id: number,

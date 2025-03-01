@@ -66,3 +66,7 @@
 .view-more-button:hover {
   background-color: #0056b3;
 }
+
+.description {
+  padding: 50px;
+}

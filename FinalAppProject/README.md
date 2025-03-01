@@ -57,6 +57,7 @@ The name of the user table is `users`. The user table stores information about u
 | username   | VARCHAR(255) | Username                               |
 | email      | VARCHAR(255) | Email address                          |
 | password   | VARCHAR(255) | Password                               |
+| is_admin   | BOOLEAN      | Admin or not, default is false         |
 | created_at | TIMESTAMP    | Default current timestamp              |
 
 ### Game Table

@@ -44,7 +44,9 @@ con.connect((err: MysqlError | null) => {
           username VARCHAR(255) NOT NULL UNIQUE,
           email VARCHAR(255) NOT NULL UNIQUE,
           password VARCHAR(255) NOT NULL,
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP)`;
+          is_admin BOOLEAN DEFAULT FALSE,
+          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)`;
 
       con.query(createUsersTable, (err: MysqlError | null, result: any) => {
         if (err) throw err;

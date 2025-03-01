@@ -33,7 +33,7 @@ export class LoginComponent {
       .subscribe({
         next: (res) => {
           if (res.status === 200) {
-            this.authService.login(res.accessToken, res.firstName);
+            this.authService.login(res.accessToken, res.user);
             this.router.navigate(['']);
           } else {
             this.displayMessage('Invalid username or password');
