@@ -1,0 +1,12 @@
+<div class="tic-tac-toe-container">
+    <h2>Tic-Tac-Toe</h2>
+    <div class="board">
+      <div class="row" *ngFor="let row of board; let rowIndex = index">
+        <div class="cell" *ngFor="let cell of row; let colIndex = index" (click)="makeMove(rowIndex, colIndex)">
+          {{ cell }}
+        </div>
+      </div>
+    </div>
+    <button (click)="resetGame()">Reset Game</button>
+  </div>
+  

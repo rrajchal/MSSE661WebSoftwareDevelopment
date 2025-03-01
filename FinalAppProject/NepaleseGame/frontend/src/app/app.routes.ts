@@ -7,6 +7,7 @@ import { ProfileComponent } from './components/profile/profile.component';
 import { ManageGamesComponent } from './components/manage_games/manage-games/manage-games.component';
 import { AddGameComponent } from './components/manage_games/add-game/add-game.component';
 import { EditGameComponent } from './components/manage_games/edit-game/edit-game.component';
+import { TicTacToeComponent } from './components/games/tic-tac-toe/tic-tac-toe.component';
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'manage-games', component: ManageGamesComponent },
   { path: 'add-game', component: AddGameComponent },
   { path: 'update-game/:gameId', component: EditGameComponent },
+  { path: 'tic-tac-toe', component: TicTacToeComponent },
 ];

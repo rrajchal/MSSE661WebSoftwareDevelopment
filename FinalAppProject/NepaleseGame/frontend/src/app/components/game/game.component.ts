@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router'; // <== Added Router
 import { GameService } from './../../services/game.service';
 import { Games } from './../../games';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ export class GameComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private gameService: GameService,
     private authService: AuthService
   ) {}
@@ -30,13 +31,9 @@ export class GameComponent implements OnInit {
 
   getGameDetails(): void {
      const gameId = this.route.snapshot.paramMap.get('gameId');
-    // if (gameId) {
-    //   this.gameService.getGameById(Number(gameId)).subscribe(game => {
-    //     this.game = game;
-    //   });
-    // }
-    if (gameId)
-    this.game = this.gameService.getGameById(Number(gameId));
+    if (gameId) {
+      this.game = this.gameService.getGameById(Number(gameId));
+    }
   }
 
   playGame(): void {
@@ -46,8 +43,11 @@ export class GameComponent implements OnInit {
     }
 
     if (this.game) {
-      alert(`Under construction: ${this.game.game_name}`);
-      // TODO: Implement game functionality
+      if (this.game.game_name === 'Kras Shunya') {
+        this.router.navigate(['/tic-tac-toe']);
+      } else {
+        alert(`Under construction: ${this.game.game_name}`);
+      }
     }
   }
 }
