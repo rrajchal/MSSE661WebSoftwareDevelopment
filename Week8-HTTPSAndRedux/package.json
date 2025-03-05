@@ -1,0 +1,35 @@
+{
+  "name": "week7-uxanduidesignandjasmine",
+  "version": "1.0.0",
+  "description": "This project is designed to delve deeper into understanding Javascript basics that we will use in creating our own Data Service Application and API through MySQL databases and complex queries through the development of your own database representing a collection of data.",
+  "main": "./server/server.js",
+  "scripts": {
+    "test": "jasmine JASMINE_CONFIG_PATH=jasmine.json",
+    "test:report": "jasmine JASMINE_CONFIG_PATH=jasmine.json && node convert-report.js",
+    "start": "nodemon ./server/server"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "body-parser": "^1.20.3",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.0",
+    "mysql": "^2.18.1",
+    "xml2js": "^0.6.2"
+  },
+  "devDependencies": {
+    "chai": "^5.1.2",
+    "chai-http": "^4.3.0",
+    "jasmine": "^4.6.0",
+    "jasmine-console-reporter": "^3.1.0",
+    "jasmine-reporters": "^2.5.2",
+    "junit-report-builder": "^5.1.1",
+    "mocha": "^11.1.0",
+    "nodemon": "^2.0.7",
+    "supertest": "^6.3.4"
+  }
+}

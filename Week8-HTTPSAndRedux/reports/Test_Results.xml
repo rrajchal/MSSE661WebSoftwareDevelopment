@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites disabled="0" errors="0" failures="0" tests="2" time="0.027">
+ <testsuite name="Sample Test Suite" timestamp="2025-02-23T21:00:38" hostname="localhost" time="0.015" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Sample Test Suite" name="should run a simple test" time="0.001" />
+ </testsuite>
+ <testsuite name="Sample Test Suite.getAllTasks" timestamp="2025-02-23T21:00:38" hostname="localhost" time="0.012" errors="0" tests="1" skipped="0" disabled="0" failures="0">
+  <testcase classname="Sample Test Suite.getAllTasks" name="should return all tasks" time="0.008" />
+ </testsuite>
+</testsuites>

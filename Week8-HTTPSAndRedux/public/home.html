@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="./css/styles.css">
+  <title>Task Management</title>
+</head>
+<body>
+  <div class="main wrapper">
+    <header>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <div class="content">
+      <div class="center">
+        <h2>Task Management</h2>
+        <div class="task-page-info">This page allows you to manage your tasks using CRUD (Create, Read, Update, Delete) operations. Use the buttons below to perform various actions on your tasks.</div>
+        <div class="task-buttons">
+          <button onclick="displayTasks()">Display Tasks</button>
+          <button onclick="showAddTaskForm()">Add Task</button>
+          <button onclick="showUpdateTaskForm()">Update Task</button>
+          <button onclick="showDeleteTaskForm()">Delete Task</button>
+        </div>
+
+        <div id="tasks-display" style="display: none;">
+          <h3>All Tasks</h3>
+          <div class="info" id="display-info">View all tasks in the database, including their IDs, descriptions, and completion status.</div>
+          <table>
+            <thead>
+              <tr class="table-header">
+                <th>Task ID</th>
+                <th>Description</th>
+                <th>Completed</th>
+              </tr>
+            </thead>
+            <tbody id="tasks-table-body">
+              <!-- Tasks will be displayed here -->
+            </tbody>
+          </table>
+        </div>
+
+        <div id="add-task-form" class="form-container" style="display: none;">
+          <h3>Add Task</h3>
+          <div class="info" id="add-info">Add a new task to the database with a description and completion status.</div>
+          <form onsubmit="addTask(event)">
+            <table>
+              <tr>
+                <td><label for="description">Description:</label></td>
+                <td><input type="text" id="description" name="description" required></td>
+              </tr>
+              <tr>
+                <td><label for="completed">Completed:</label></td>
+                <td><input type="checkbox" id="completed" name="completed"></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align:center;"><button type="submit">Add Task</button></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        
+        <div id="update-task-form" class="form-container" style="display: none;">
+          <h3>Update Task</h3>
+          <div class="info" id="update-info">Update an existing task in the database by providing its ID, new description, and completion status.</div>
+          <form onsubmit="updateTask(event)">
+            <table>
+              <tr>
+                <td><label for="task-id">Task ID:</label></td>
+                <td><input type="text" id="task-id" name="task-id" required></td>
+              </tr>
+              <tr>
+                <td><label for="description">Description:</label></td>
+                <td><input type="text" id="update-description" name="description" required></td>
+              </tr>
+              <tr>
+                <td><label for="completed">Completed:</label></td>
+                <td><input type="checkbox" id="update-completed" name="completed"></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align:center;"><button type="submit">Update Task</button></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        
+        <div id="delete-task-form" class="form-container" style="display: none;">
+          <h3>Delete Task</h3>
+          <div class="info" id="delete-info">Delete a task from the database by providing its ID.</div>
+          <form onsubmit="deleteTask(event)">
+            <table>
+              <tr>
+                <td><label for="task-id">Task ID:</label></td>
+                <td><input type="text" id="delete-task-id" name="task-id" required></td>
+              </tr>
+              <tr>
+                <td colspan="2" style="text-align:center;"><button type="submit">Delete Task</button></td>
+              </tr>
+            </table>
+          </form>
+        </div>
+        
+        <div id="message" style="display: none; color: red;"></div>
+      </div>
+    </div>
+
+    <footer>
+      <nav>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="./about.html">About</a></li>
+        </ul>
+        <p>Author: <a href="https://github.com/rrajchal/MSSE661WebSoftwareDevelopment/tree/main/Week6-AjaxAndCRUD">Rajesh Rajchal</a></p>
+      </nav>
+    </footer>
+  </div>
+  <script src="./src/service-helpers.js"></script>
+  <script src="./src/tasks.service.js"></script>
+  <script src="./src/auth.service.js"></script>
+  <script src="./src/tasks.js"></script>
+</body>
+</html>
