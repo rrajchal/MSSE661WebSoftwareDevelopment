@@ -2,6 +2,10 @@ const express = require('express');
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 
+const https = require('https');
+const fs = require('fs');
+const path = require('path');
+
 const authRoutes = require('./src/routes/auth.routes');
 const userRoutes = require('./src/routes/user.routes');
 const tasksRoutes = require('./src/routes/tasks.routes');
@@ -34,8 +38,22 @@ app.use(middleware.error404);
 app.use(middleware.error500);
 
 // Listen on server port
+/*
 app.listen(port, () => {
   console.log(`server.js: Running on port: http://localhost:${port}...`);
+});
+*/
+
+// SSL Certificate
+const sslOptions = {
+  key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
+  cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem')),
+  ca: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem')), 
+};
+
+// Listen on HTTPS server port
+https.createServer(sslOptions, app).listen(port, () => {
+  console.log(`Server is running on https://localhost:${port}`);
 });
 
 module.exports = app;

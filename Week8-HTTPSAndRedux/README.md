@@ -1,4 +1,4 @@
-## **Module 7 Enhance UI and UX**
+## **Module 8 Use HTTPS**
 
 # Introduction Page
 This project is designed to delve deeper into understanding Javascript basics, Unit Test and ES6 that we will use in creating our own Data Service Application and API through MySQL databases and complex queries through the development of your own database representing a collection of data.
@@ -7,13 +7,9 @@ In this module, we are focused on enhancing the website's user interface (UI) an
 I also wrote jasmine tests. To run jasmine test:
 
 # Create Test and create Report
-- Run: `npm run test`
-
-  This will create reports/Test_Results.xml
-
-- Run: `npm run test:report`
-
-  This will create reports/Test_Results.html
+- Download OpenSSL for windows: https://slproweb.com/products/Win32OpenSSL.html
+- Install Win64OpenSSL_Light-3_4_1.msi and check version to make sure it is installed correctly: `openssl version`
+- Run: `node .\server\get_keys.js`. This will generate key.pfx, cert.pem, and key.pem in server/ssl
 
 
 

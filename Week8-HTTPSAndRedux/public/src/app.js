@@ -50,7 +50,7 @@ const doLogout = function(e) {
   e.preventDefault();
   const refreshToken = localStorage.getItem('refreshToken'); // Get refresh token 
 
-  fetch('http://localhost:3000/api/auth/logout', { // Call logout endpoint
+  fetch('https://localhost:3000/api/auth/logout', { // https
     method: 'POST',
     headers: {
       'Content-Type': 'application/json',
