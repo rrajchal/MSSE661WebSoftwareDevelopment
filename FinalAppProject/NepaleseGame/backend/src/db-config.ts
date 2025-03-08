@@ -45,7 +45,7 @@ con.connect((err: MysqlError | null) => {
           email VARCHAR(255) NOT NULL UNIQUE,
           password VARCHAR(255) NOT NULL,
           is_admin BOOLEAN DEFAULT FALSE,
-          created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+          created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
           modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)`;
 
       con.query(createUsersTable, (err: MysqlError | null, result: any) => {
@@ -61,7 +61,7 @@ con.connect((err: MysqlError | null) => {
             game_rule TEXT NOT NULL,
             image_url VARCHAR(255) NOT NULL,
             type VARCHAR(255) NOT NULL,
-            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            created_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
             modified_date TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP)`;
 
         con.query(createGamesTable, (err: MysqlError | null, result: any) => {

@@ -6,11 +6,12 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
+import { ButtonComponent } from './../common/button/button.component'
 
 @Component({
   selector: 'app-register',
   standalone: true,
-  imports: [CommonModule, FormsModule, HttpClientModule, RouterModule],
+  imports: [ButtonComponent, CommonModule, FormsModule, HttpClientModule, RouterModule],
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })

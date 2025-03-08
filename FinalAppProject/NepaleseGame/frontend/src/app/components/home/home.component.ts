@@ -4,11 +4,12 @@ import { Games } from './../../games';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
+import { ButtonComponent } from './../common/button/button.component'
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [CommonModule, HttpClientModule],
+  imports: [ButtonComponent, CommonModule, HttpClientModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })

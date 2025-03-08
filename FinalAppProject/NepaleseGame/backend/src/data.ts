@@ -145,7 +145,7 @@ const insertGames = (games: Game[]) => {
       return;
     }
     games.forEach(game => {
-      const query = `INSERT INTO games (game_id, game_name, category, description, game_rule, image_url, type, created_at, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
+      const query = `INSERT INTO games (game_id, game_name, category, description, game_rule, image_url, type, created_date, modified_date) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)`;
       const values = [game.game_id, game.game_name, game.category, game.description, game.game_rule, game.image_url, game.type, game.created_date, game.modified_date]; 
 
       con.query(query, values, (err, result) => {

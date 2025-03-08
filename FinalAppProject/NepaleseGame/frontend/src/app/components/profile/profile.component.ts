@@ -2,11 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { AuthService } from './../../services/auth.service';
+import { HttpClient } from '@angular/common/http';
+import { ButtonComponent } from './../common/button/button.component';
+import { environment } from './../../environments/environment';
 
 @Component({
   selector: 'app-profile',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [ButtonComponent, CommonModule, FormsModule],
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
@@ -14,7 +17,7 @@ export class ProfileComponent implements OnInit {
   user: any = null;
   editMode: boolean = false;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService, private http: HttpClient) {}
 
   ngOnInit(): void {
     this.authService.user$.subscribe(user => {
@@ -27,8 +30,14 @@ export class ProfileComponent implements OnInit {
   }
 
   saveProfile(): void {
-    // Logic to save the updated profile
-    // After saving, you can reset the edit mode
-    this.editMode = false;
+    this.http.put(`${environment.apiUrl}/api/user/${this.user.user_id}`, this.user).subscribe({
+      next: (updatedUser) => {
+        this.user = updatedUser;
+        this.editMode = false;
+      },
+      error: (error) => {
+        console.error('Error updating profile:', error);
+      }
+    });
   }
 }

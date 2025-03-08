@@ -1,27 +1,47 @@
 <div class="add-game-container">
-    <h2>Add Game</h2>
-    <form (ngSubmit)="addGame()">
-      <label>
-        Game Name:
-        <input [(ngModel)]="game.game_name" name="game_name" required>
-      </label>
-      <label>
-        Category:
-        <input [(ngModel)]="game.category" name="category" required>
-      </label>
-      <label>
-        Description:
-        <textarea [(ngModel)]="game.description" name="description" required></textarea>
-      </label>
-      <label>
-        Image URL:
-        <input [(ngModel)]="game.image_url" name="image_url" required>
-      </label>
-      <label>
-        Type:
-        <input [(ngModel)]="game.type" name="type" required>
-      </label>
-      <button type="submit">Add Game</button>
-    </form>
-  </div>
-  
+  <h2>Add Game</h2>
+  <form (ngSubmit)="addGame()">
+    <table class="add-game-table">
+      <tr>
+        <td><label for="game_name">Game Name:</label></td>
+        <td><input [(ngModel)]="newGame.game_name" id="game_name" name="game_name" required></td>
+      </tr>
+      <tr>
+        <td><label for="category">Category:</label></td>
+        <td>
+          <select [(ngModel)]="newGame.category" id="category" name="category" required>
+            <option value="Board Game">Board Game</option>
+            <option value="Card Game">Card Game</option>
+            <option value="Traditional/Folk Game">Traditional/Folk Game</option>
+            <option value="Modern Game">Modern Game</option>
+          </select>
+        </td>
+      </tr>
+      <tr>
+        <td><label for="description">Description:</label></td>
+        <td><textarea [(ngModel)]="newGame.description" id="description" name="description" required></textarea></td>
+      </tr>
+      <tr>
+        <td><label for="game_rule">Rules:</label></td>
+        <td><textarea [(ngModel)]="newGame.game_rule" id="game_rule" name="game_rule" required></textarea></td>
+      </tr>
+      <tr>
+        <td><label for="image_url">Image URL:</label></td>
+        <td><input [(ngModel)]="newGame.image_url" id="image_url" name="image_url" required></td>
+      </tr>
+      <tr>
+        <td><label for="type">Type:</label></td>
+        <td>
+          <select [(ngModel)]="newGame.type" id="type" name="type" required>
+            <option value="Indoor">Indoor</option>
+            <option value="Outdoor">Outdoor</option>
+          </select>
+        </td>
+      </tr>
+    </table>
+    <app-button 
+      [label]="'Add Game'"
+      type="submit">
+    </app-button>
+  </form>
+</div>

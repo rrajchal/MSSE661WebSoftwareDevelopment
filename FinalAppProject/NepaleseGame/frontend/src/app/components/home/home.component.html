@@ -22,7 +22,10 @@
       <p><strong>Type:</strong> {{ game.type }}</p>
       <p><strong>Description:</strong> {{ game.description }}</p>
       <div class="view-more-button-container">
-        <button class="view-more-button" (click)="viewGame(game)">View More</button>
+        <app-button 
+          [label]="'View More'" 
+          (click)="viewGame(game)">
+        </app-button>
       </div>
     </div>
   </div>

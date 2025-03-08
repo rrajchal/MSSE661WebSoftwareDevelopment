@@ -1,0 +1,65 @@
+.manage-games-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+  }
+  
+  .manage-games-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .manage-games-container button {
+    display: block;
+    margin: 0 auto 20px;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .manage-games-container button:hover {
+    background-color: #0056b3;
+  }
+  
+  .manage-games-container table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: 'Arial', sans-serif;
+  }
+  
+  .manage-games-container th, .manage-games-container td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .manage-games-container th {
+    background-color: #f4f4f4;
+    color: #333;
+  }
+  
+  .manage-games-container td button {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .manage-games-container td button:hover {
+    background-color: #0056b3;
+  }
+  

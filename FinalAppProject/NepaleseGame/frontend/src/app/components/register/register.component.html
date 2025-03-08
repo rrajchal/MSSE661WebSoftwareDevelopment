@@ -21,7 +21,10 @@
       <label for="password">Password:</label>
       <input type="password" id="password" name="password" required>
     </div>
-    <button type="submit">Register</button>
+    <app-button
+      [label]="'Register'"
+      (click)="doRegister($event)">
+    </app-button>
     <p id="message" class="error-message" style="display: none;"></p>
   </form>
   <p>Already have an account? <a [routerLink]="['/login']">Login</a></p>

@@ -1,7 +1,11 @@
 <div class="manage-games-container">
-    <h2>Manage Games</h2>
-    <button (click)="navigateToAddGame()">Add Game</button>
-    <table>
+  <h2>Manage Games</h2>
+  <app-button 
+    [label]="'Add Game'" 
+    (click)="navigateToAddGame()">
+  </app-button>
+  <table>
+    <thead>
       <tr>
         <th>Game Name</th>
         <th>Category</th>
@@ -10,6 +14,8 @@
         <th>Type</th>
         <th>Actions</th>
       </tr>
+    </thead>
+    <tbody>
       <tr *ngFor="let game of games">
         <td>{{ game.game_name }}</td>
         <td>{{ game.category }}</td>
@@ -17,10 +23,18 @@
         <td>{{ game.image_url }}</td>
         <td>{{ game.type }}</td>
         <td>
-          <button *ngIf="game.game_id !== undefined" (click)="editGame(game.game_id)">Edit</button>
-          <button *ngIf="game.game_id !== undefined" (click)="deleteGame(game.game_id)"></button>
+          <app-button 
+            *ngIf="game.game_id !== undefined" 
+            [label]="'Edit'" 
+            (click)="editGame(game.game_id)">
+          </app-button>
+          <app-button 
+            *ngIf="game.game_id !== undefined" 
+            [label]="'Delete'" 
+            (click)="deleteGame(game.game_id)">
+          </app-button>
         </td>
       </tr>
-    </table>
-  </div>
-  
+    </tbody>
+  </table>
+</div>

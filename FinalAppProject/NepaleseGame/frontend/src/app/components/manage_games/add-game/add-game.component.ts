@@ -1,31 +1,45 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
-import { GameService } from '../../../services/game.service';
+import { ActivatedRoute, Router } from '@angular/router';
+import { HttpClient } from '@angular/common/http';
 import { Games } from '../../../games';
+import { environment } from '../../../environments/environment';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { ButtonComponent } from './../../common/button/button.component';
 
 @Component({
   selector: 'app-add-game',
   templateUrl: './add-game.component.html',
   styleUrls: ['./add-game.component.css'],
-  imports: [CommonModule, FormsModule]
+  imports: [ButtonComponent, CommonModule, FormsModule]
 })
 export class AddGameComponent {
-  game: Games = {
-    game_name: '',
-    category: '',
-    description: '',
-    image_url: '',
-    game_rule: '',
-    type: ''
-  };
+  newGame: Games = new Games(
+    0,
+    '',
+    '',
+    '',
+    '',
+    '',
+    '',
+    new Date(),
+    new Date()
+  );
 
-  constructor(private gameService: GameService, private router: Router) {}
+  constructor(
+    private route: ActivatedRoute,
+    private router: Router,
+    private http: HttpClient
+  ) {}
 
   addGame(): void {
-    // this.gameService.addGame(this.game).subscribe(() => {
-    //   this.router.navigate(['/manage-games']);
-    // });
+    this.http.post(`${environment.apiUrl}/api/games`, this.newGame).subscribe({
+      next: () => {
+        this.router.navigate(['/manage-games']);
+      },
+      error: (error) => {
+        console.error('Error adding game:', error);
+      }
+    });
   }
 }

@@ -39,3 +39,32 @@ export const getUserByUsername = (req: Request, res: Response) => {
     res.status(200).json(result[0]);
   });
 };
+
+// Update user by ID
+export const updateUserById = (req: Request, res: Response): void => {
+  const user_id = req.params.userId;
+  const { first_name, last_name, username, email } = req.body;
+
+  if (!first_name || !last_name || !username || !email) {
+    res.status(400).json({ message: 'All fields are required' });
+    return;
+  }
+
+  db.query(queries.UPDATE_USER_BY_ID, [first_name, last_name, username, email, user_id], (err, result) => {
+    if (err) {
+      res.status(500).json({ error: err });
+      return;
+    }
+    if (result.affectedRows === 0) {
+      res.status(404).json({ message: 'User not found' });
+      return;
+    }
+    db.query(queries.GET_USER_BY_ID, [user_id], (err, updatedResult) => {
+      if (err) {
+        res.status(500).json({ error: err });
+        return;
+      }
+      res.status(200).json(updatedResult[0]);
+    });
+  });
+};
