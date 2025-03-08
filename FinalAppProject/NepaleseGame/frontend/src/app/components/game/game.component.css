@@ -32,8 +32,11 @@
     text-align: left;
     margin-bottom: 20px;
   }
-  
+
+ 
   .game-details p {
+    font-family: 'Oxygen', sans-serif;
+    font-size: 1.2em;
     margin: 10px 0;
   }
   

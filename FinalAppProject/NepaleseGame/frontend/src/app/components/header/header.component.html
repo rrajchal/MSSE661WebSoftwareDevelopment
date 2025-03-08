@@ -1,13 +1,28 @@
-<nav class="navbar">
-  <div class="navbar-title">
-    <h1>Nepalese Game Portal – A Fun Online Experience</h1>
-  </div>
-  <div class="navbar-links">
-    <a *ngIf="(user$ | async)?.is_admin" [routerLink]="['/manage-games']">Manage Games</a>
-    <a [routerLink]="['/']">Home</a>
-    <a [routerLink]="['/profile']">Profile</a>
-    <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/login']">Login</a>
-    <a *ngIf="isLoggedIn$ | async" href="" (click)="logout()">Logout</a>
-    <span *ngIf="isLoggedIn$ | async">Hello, {{ (user$ | async)?.first_name }}</span>
-  </div>
-</nav>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Nepalese Game Portal</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <nav class="navbar">
+      <div class="navbar-title playfair-display-title">
+        <h1>Nepalese Game Portal – A Fun Online Experience</h1>
+      </div>
+      <div class="navbar-links">
+        <a *ngIf="(user$ | async)?.is_admin" [routerLink]="['/manage-games']"
+          >Manage Games</a
+        >
+        <a [routerLink]="['/']">Home</a>
+        <a [routerLink]="['/profile']">Profile</a>
+        <a *ngIf="!(isLoggedIn$ | async)" [routerLink]="['/login']">Login</a>
+        <a *ngIf="isLoggedIn$ | async" href="" (click)="logout()">Logout</a>
+        <span *ngIf="isLoggedIn$ | async"
+          >Hello, {{ (user$ | async)?.first_name }}</span
+        >
+      </div>
+    </nav>
+  </body>
+</html>

@@ -9,6 +9,12 @@
   margin-bottom: 30px;
 }
 
+.description p {
+  font-family: 'lora', serif;
+  font-size: 1.5em;
+  line-height: 1.6;
+}
+
 .games-grid {
   display: flex;
   flex-wrap: wrap;
@@ -39,8 +45,9 @@
 }
 
 .game-details {
+  font-family: "Playfair Display", serif;
   padding: 15px;
-  text-align: center;
+  text-align: left;
 }
 
 .game-details h2 {
@@ -49,6 +56,7 @@
 
 .game-details p {
   margin: 5px 0;
+  text-align: left;
 }
 
 .view-more-button {
@@ -61,6 +69,7 @@
   color: white;
   cursor: pointer;
   transition: background-color 0.3s ease;
+  align-items: center;
 }
 
 .view-more-button:hover {

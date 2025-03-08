@@ -23,6 +23,7 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.user$.subscribe(user => {
+      // Here all user information is collected
       console.log('User data:', user);
     });
   }
