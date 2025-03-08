@@ -21,7 +21,9 @@
       <p><strong>Category:</strong> {{ game.category }}</p>
       <p><strong>Type:</strong> {{ game.type }}</p>
       <p><strong>Description:</strong> {{ game.description }}</p>
-      <button class="view-more-button" (click)="viewGame(game)">View More</button>
+      <div class="view-more-button-container">
+        <button class="view-more-button" (click)="viewGame(game)">View More</button>
+      </div>
     </div>
   </div>
 </div>

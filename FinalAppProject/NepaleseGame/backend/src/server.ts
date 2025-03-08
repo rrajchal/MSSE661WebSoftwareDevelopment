@@ -1,7 +1,6 @@
 import express from "express";
 import cors from "cors";
 import dotenv from 'dotenv';
-import { sampleGames } from "./data";
 const logger = require('morgan');
 const bodyParser = require('body-parser');
 const logLevel = process.env.LOG_LEVEL || 'dev';
@@ -10,8 +9,6 @@ import { authRoutes } from './routes/auth.routes';
 import { userRoutes } from './routes/user.routes';
 import { gamesRoutes } from './routes/games.routes';
 const middleware = require('./middleware/errors.middleware');
-const bcrypt = require('bcrypt');
-const jwt = require('jsonwebtoken');
 
 dotenv.config();
 
@@ -29,8 +26,6 @@ app.use(cors({
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-
-//app.use(express.static('public'));
 
 // Use auth routes
 app.use('/api/auth', authRoutes);          // http://localhost:5000/api/auth

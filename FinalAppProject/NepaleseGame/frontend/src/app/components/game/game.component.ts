@@ -30,9 +30,16 @@ export class GameComponent implements OnInit {
   }
 
   getGameDetails(): void {
-     const gameId = this.route.snapshot.paramMap.get('gameId');
+    const gameId = this.route.snapshot.paramMap.get('gameId');
     if (gameId) {
-      this.game = this.gameService.getGameById(Number(gameId));
+      this.gameService.getGameById(Number(gameId)).subscribe(
+        (game) => {
+          this.game = game;
+        },
+        (error) => {
+          console.error('Error loading game details:', error);
+        }
+      );
     }
   }
 

@@ -11,7 +11,7 @@
     padding: 20px;
     border: 1px solid #ddd;
     border-radius: 10px;
-    background-color: #f9f9f9;
+    background-color: #cef2f3;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   }
   
@@ -52,7 +52,7 @@
   }
   
   .play-button:hover {
-    background-color: #45a049;
+    background-color: #057e0b;
   }
   
   .loading {

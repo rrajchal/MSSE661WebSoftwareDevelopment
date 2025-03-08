@@ -11,10 +11,10 @@ import { TicTacToeComponent } from './components/games/tic-tac-toe/tic-tac-toe.c
 
 export const routes: Routes = [
   { path: '', component: HomeComponent },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'profile', component: ProfileComponent},
-  { path: 'home', component: HomeComponent },
   { path: 'game/:gameId', component: GameComponent },
   { path: 'manage-games', component: ManageGamesComponent },
   { path: 'add-game', component: AddGameComponent },

@@ -4,7 +4,7 @@ export class Games {
   category: string; // Category of the game
   description: string; // Description of the game
   game_rule: string; // Rules of the game
-  image: Buffer; // Inage stored as binary data
+  image: Buffer; // Inmage stored as binary data
   type: string; // Type (Indoor/Outdoor)
   created_date: Date; // Default current timestamp for creation date
   modified_date: Date; // Timestamp for the last modified date
